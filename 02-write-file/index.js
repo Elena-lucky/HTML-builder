@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const readline = require('node:readline');
-const filePath = '02-write-file/text.txt';
-const writeStream = fs.createWriteStream(filePath, { flags: 'a' });
+const pathToFile = '02-write-file/text.txt';
+const writeStream = fs.createWriteStream(pathToFile, { flags: 'a' });
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -18,9 +18,4 @@ rl.on('line', (input) => {
 });
 rl.on('close', () => {
   process.exit();
-});
-process.on('SIGINT', () => {
-  console.log('\nInterrupted by user (ctrl + c). Goodbye!');
-  writeStream.end();
-  rl.close();
 });
